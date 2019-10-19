@@ -10,8 +10,6 @@ class MyFunctions {
 
         StringBuilder data = new StringBuilder();
 
-        System.out.println("readFile() called.");
-
         Scanner scanner = null;
         try{
             scanner = new Scanner(new FileReader("ent.txt"));
@@ -30,10 +28,9 @@ class MyFunctions {
             }
         }
 
-        System.out.println("readFile() ended.");
-
         return data.toString();
     }
+
     String filterChars(String data){
         return data.replaceAll("[^a-zA-Z0-9\\s]", "");
     }
@@ -41,8 +38,15 @@ class MyFunctions {
     String normalize(String data){
         return data.toLowerCase();
     }
-    String scan(String data){
-        //return vector of words in data string
-        return data;
+
+    String[] scan(String data){
+        //return array of words in data string
+        return data.split(" "); //("\\W+") to remove ',',';'...
+    }
+
+    String[] removeStopWords(String[] words){
+
+
+        return words;
     }
 }
