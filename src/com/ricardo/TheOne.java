@@ -1,9 +1,12 @@
 package com.ricardo;
 
+import java.util.Arrays;
+import java.util.Vector;
 import java.util.function.Function;
 
 class TheOne {
     private String value;
+    private String[] words;
 
     TheOne(String value) {
         this.value = value;
@@ -13,7 +16,15 @@ class TheOne {
         this.value = myFunction.apply(this.value);
         return this;
     }
+
+    TheOne bind2(Function<String, String[]> myFunc){
+        this.words = myFunc.apply(this.value);
+        return this;
+    }
+
     void printMe(){
-        System.out.println(this.value);
+        for (String w:words) {
+            System.out.println(w);
+        }
     }
 }
