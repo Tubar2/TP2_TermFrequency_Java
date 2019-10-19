@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 class MyFunctions {
+    //Opens entry file and returns data Str
     String readFile(){
 
         StringBuilder data = new StringBuilder();
@@ -33,20 +34,20 @@ class MyFunctions {
 
         return data.toString();
     }
-
+    //Removes special characters from previously created data Str
     String filterChars(String data){
         return data.replaceAll("[^a-zA-Z0-9\\s]", "");
     }
-
+    //converts all characters to lower case
     String normalize(String data){
         return data.toLowerCase();
     }
-
+    //Creates String array of words
     String[] scan(String data){
         //return array of words in data string
         return data.split(" "); //("\\W+") to remove ',',';'...
     }
-
+    //Removes stop words from previously created words array
     String[] removeStopWords(String[] words){
 
         StringBuilder t_stop_words = new StringBuilder();
@@ -83,4 +84,9 @@ class MyFunctions {
         words = list.toArray(new String[0]);
         return words;
     }
+    //TODO: (function that) Creates (Map?Array???) for the frequency of each word
+
+    //TODO: (function that) Sorts (??) based on frequency
+
+    //TODO: (function that) Returns top 25 words frequency
 }
