@@ -22,6 +22,11 @@ class TheOne {
         return this;
     }
 
+    TheOne bind3(Function<String[], String[]> myFun){
+        this.words = myFun.apply(this.words);
+        return this;
+    }
+
     void printMe(){
         for (String w:words) {
             System.out.println(w);
