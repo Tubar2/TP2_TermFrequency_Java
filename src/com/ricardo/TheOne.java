@@ -19,7 +19,7 @@ class TheOne {
     //TODO: should write some code to check if the cast from Object to List<> is safe
     @SuppressWarnings("unchecked")
     void printMe() {
-        for (String str : ((List<String>)this.value)){
+        for (String str : ((List<String>)this.value)) {
             System.out.println(str);
         }
     }
