@@ -1,6 +1,10 @@
 package com.ricardo;
 
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
 public class Main {
+
     public static void main(String[] args) {
 
         String path;
@@ -12,17 +16,26 @@ public class Main {
         }
 
         //Instantiation necessary to use functions in bind
-        MyFunctions myFunctions = new MyFunctions();
+        MyMonads myMonads = new MyMonads();
 
-        new TheOne(path).bind(myFunctions::readFile)
-                .bind(myFunctions::filterChars)
-                .bind(myFunctions::normalize)
-                .bind(myFunctions::scan)
-                .bind(myFunctions::removeStopWords)
-                .bind(myFunctions::frequencies)
-                .bind(myFunctions::sort)
-                .bind(myFunctions::top_25_freqs)
-                .printMe();
+        CompletableFuture<Object> theOneCompletableFuture = CompletableFuture.supplyAsync(() -> path)
+                .thenApply(myMonads::readFile)
+                .thenApply(myMonads::filterChars)
+                .thenApply(myMonads::normalize)
+                .thenApply(myMonads::scan)
+                .thenApply(myMonads::removeStopWords)
+                .thenApply(myMonads::frequencies)
+                .thenApply(myMonads::sort)
+                .thenApply(myMonads::top_25_freqs)
+                .thenApply(value -> {
+                    for (String str : (value)) {
+                        System.out.println(str);
+                    }
+                    return "Process Ended";
+                });
+
+
+
 
     }
 }
