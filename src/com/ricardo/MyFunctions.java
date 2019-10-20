@@ -7,7 +7,7 @@ import java.util.*;
 class MyFunctions {
 
     //Opens entry file and returns data Str
-    String readFile() {
+    Object readFile() {
 
         StringBuilder data = new StringBuilder();
 
@@ -33,24 +33,24 @@ class MyFunctions {
     }
 
     //Removes special characters from previously created data Str
-    String filterChars(String data) {
-        String str = data.replaceAll("[^a-zA-Z0-9\\s]", " "); //switch all symbols to spaces
+    Object filterChars(Object data) {
+        String str = ((String)data).replaceAll("[^a-zA-Z0-9\\s]", " "); //switch all symbols to spaces
         return str.trim().replaceAll(" +", " "); //switch consecutive spaces to single space
     }
 
     //converts all characters to lower case
-    String normalize(String data) {
-        return data.toLowerCase();
+    Object normalize(Object data) {
+        return ((String)data).toLowerCase();
     }
 
     //Creates String array of words
-    String[] scan(String data) {
+    Object scan(Object data) {
         //return array of words in data string
-        return data.split(" "); //("\\W+") to remove ',',';'...
+        return ((String)data).split(" "); //("\\W+") to remove ',',';'...
     }
 
     //Removes stop words from previously created words array
-    String[] removeStopWords(String[] words) {
+    Object removeStopWords(Object words) {
 
         StringBuilder t_stop_words = new StringBuilder();
 
@@ -77,7 +77,7 @@ class MyFunctions {
         //Create String vector of original words
         String e_stop_words = t_stop_words.toString();
         String[] stop_words = e_stop_words.split(" ");
-        List<String> list = new ArrayList<String>(Arrays.asList(words));
+        List<String> list = new ArrayList<String>(Arrays.asList(((String[])words)));
 
         for (String stop_word : stop_words) {
             list.removeAll(Collections.singleton((stop_word)));
@@ -88,10 +88,10 @@ class MyFunctions {
     }
 
     //Creates HashMap for frequency of each word
-    Map<String, MutableInteger> frequencies(String[] word_list) {
+    Object frequencies(Object word_list) {
         Map<String, MutableInteger> wordFreqs = new HashMap<>();
 
-        for (String word : word_list) {
+        for (String word : ((String[])word_list)) {
             MutableInteger count = wordFreqs.get(word);
             if (count == null) {
                 wordFreqs.put(word, new MutableInteger(1));
@@ -103,10 +103,12 @@ class MyFunctions {
     }
 
     //Create a list with words and freqs from HashMap and sort it in descending order
-    List<WordFrequencyPair> sort(Map<String, MutableInteger> wordFreqs) {
+    //TODO: should write some code to check if the cast from Object to Map<> is safe
+    @SuppressWarnings("unchecked")
+    Object sort(Object wordFreqs) {
         List<WordFrequencyPair> pairs = new ArrayList<>();
 
-        for (Map.Entry<String, MutableInteger> entry : wordFreqs.entrySet()) {
+        for (Map.Entry<String, MutableInteger> entry : ((Map<String, MutableInteger>)wordFreqs).entrySet()) {
             pairs.add(new WordFrequencyPair(entry.getKey(), entry.getValue().getValue()));
         }
 
@@ -117,12 +119,14 @@ class MyFunctions {
 
 
     //Returns top 25 words frequency
-    List<String> top_25_freqs(List<WordFrequencyPair> wordFreqs) {
+    //TODO: should write some code to check if the cast from Object to List<> is safe
+    @SuppressWarnings("unchecked")
+    Object top_25_freqs(Object wordFreqs) {
 
         int numWordsPrinted = 0;
         List<String> top25 = new ArrayList<>();
 
-        for (WordFrequencyPair pair : wordFreqs) {
+        for (WordFrequencyPair pair : ((List<WordFrequencyPair>)wordFreqs)) {
             top25.add(pair.getWord() + " - " + pair.getFrequency());
 
             numWordsPrinted++;
