@@ -16,21 +16,15 @@ public class Main {
         //Instantiation necessary to use functions in bind
         MyFunctions myFunctions = new MyFunctions();
 
-        new TheOne<String>(path).bind(myFunctions::readFile)
+        new TheOne<>(path).bind(myFunctions::readFile)
                 .bind(myFunctions::filterChars)
                 .bind(myFunctions::normalize)
                 .bind(myFunctions::scan)
                 .bind(myFunctions::removeStopWords)
                 .bind(myFunctions::frequencies)
                 .bind(myFunctions::sort)
-                .bind(myFunctions::top_25_freqs).printMe();
+                .bind(myFunctions::top_25_freqs).bind(TheOne::printMe);
 
     }
 
-//    bind(value-> {
-//        for (String str : value) {
-//            System.out.println(str);
-//        }
-//        return "Process Ended";
-//    })
 }
