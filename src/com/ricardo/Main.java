@@ -13,17 +13,14 @@ public class Main {
             path = "dracula.txt";
         }
 
-        //Instantiation necessary to use functions in bind
-        MyFunctions myFunctions = new MyFunctions();
-
-        new TheOne<>(path).bind(myFunctions::readFile)
-                .bind(myFunctions::filterChars)
-                .bind(myFunctions::normalize)
-                .bind(myFunctions::scan)
-                .bind(myFunctions::removeStopWords)
-                .bind(myFunctions::frequencies)
-                .bind(myFunctions::sort)
-                .bind(myFunctions::top_25_freqs).bind(TheOne::printMe);
+        new TheOne<>(path).bind(MyFunctions::readFile)
+                .bind(MyFunctions::filterChars)
+                .bind(MyFunctions::normalize)
+                .bind(MyFunctions::scan)
+                .bind(MyFunctions::removeStopWords)
+                .bind(MyFunctions::frequencies)
+                .bind(MyFunctions::sort)
+                .bind(MyFunctions::top_25_freqs).bind(TheOne::printMe);
 
     }
 

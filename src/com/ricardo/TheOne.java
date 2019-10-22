@@ -14,7 +14,7 @@ class TheOne<T>  {
         this.value = value;
     }
 
-    <U>TheOne<U> bind(Function<T, U > myFunction) {
+    <U>TheOne<U> bind(Function<T, U> myFunction) {
         U value = myFunction.apply(this.value);
         return new TheOne<U>(value);
     }

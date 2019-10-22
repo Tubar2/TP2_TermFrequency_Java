@@ -7,7 +7,7 @@ import java.util.*;
 class MyFunctions {
 
     //Opens entry file and returns data Str
-    String readFile(String path) {
+    static String readFile(String path) {
 
         StringBuilder data = new StringBuilder();
 
@@ -33,25 +33,25 @@ class MyFunctions {
     }
 
     //Removes special characters from previously created data Str
-    String filterChars(String data) {
+    static String filterChars(String data) {
         String str = data.replaceAll("[^a-zA-Z0-9'\\s]", " "); //switch all symbols to spaces
 
         return str.trim().replaceAll(" +", " "); //switch consecutive spaces to single space
     }
 
     //converts all characters to lower case
-    String normalize(String data) {
+    static String normalize(String data) {
         return data.toLowerCase();
     }
 
     //Creates String array of words
-    String[] scan(String data) {
+    static String[] scan(String data) {
         //return array of words in data string
         return data.split(" "); //("\\W+") to remove ',',';'...
     }
 
     //Removes stop words from previously created words array
-    String[] removeStopWords(String[] words) {
+    static String[] removeStopWords(String[] words) {
 
         StringBuilder t_stop_words = new StringBuilder();
 
@@ -89,7 +89,7 @@ class MyFunctions {
     }
 
     //Creates HashMap for frequency of each word
-    Map<String, MutableInteger> frequencies(String[] word_list) {
+    static Map<String, MutableInteger> frequencies(String[] word_list) {
         Map<String, MutableInteger> wordFreqs = new HashMap<>();
 
         for (String word : word_list) {
@@ -104,7 +104,7 @@ class MyFunctions {
     }
 
     //Create a list with words and freqs from HashMap and sort it in descending order
-    List<WordFrequencyPair> sort(Map<String, MutableInteger> wordFreqs) {
+    static List<WordFrequencyPair> sort(Map<String, MutableInteger> wordFreqs) {
         List<WordFrequencyPair> pairs = new ArrayList<>();
 
         for (Map.Entry<String, MutableInteger> entry : wordFreqs.entrySet()) {
@@ -118,7 +118,7 @@ class MyFunctions {
 
 
     //Returns top 25 words frequency
-    List<String> top_25_freqs(List<WordFrequencyPair> wordFreqs) {
+    static List<String> top_25_freqs(List<WordFrequencyPair> wordFreqs) {
 
         int numWordsPrinted = 0;
         List<String> top25 = new ArrayList<>();
