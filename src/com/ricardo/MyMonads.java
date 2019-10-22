@@ -34,7 +34,7 @@ class MyMonads {
 
     //Removes special characters from previously created data Str
     String filterChars(String data) {
-        String str = data.replaceAll("[^a-zA-Z0-9\\s]", " "); //switch all symbols to spaces
+        String str = data.replaceAll("[^a-zA-Z0-9'\\s]", " "); //switch all symbols to spaces
 
         return str.trim().replaceAll(" +", " "); //switch consecutive spaces to single space
     }
