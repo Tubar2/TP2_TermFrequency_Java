@@ -1,35 +1,27 @@
 package com.ricardo;
 
-import java.util.Arrays;
-import java.util.Vector;
+import java.util.List;
 import java.util.function.Function;
 
 class TheOne {
-    private String value;
-    private String[] words;
+    private Object value;
 
     TheOne(String value) {
         this.value = value;
     }
 
-    TheOne bind(Function<String, String> myFunction){
+    TheOne bind(Function<Object, Object> myFunction) {
         this.value = myFunction.apply(this.value);
         return this;
     }
 
-    TheOne bind2(Function<String, String[]> myFunc){
-        this.words = myFunc.apply(this.value);
-        return this;
-    }
-
-    TheOne bind3(Function<String[], String[]> myFun){
-        this.words = myFun.apply(this.words);
-        return this;
-    }
-
-    void printMe(){
-        for (String w:words) {
-            System.out.println(w);
+    //Prints list of 25 most used words with sorted freqs
+    //TODO: should write some code to check if the cast from Object to List<> is safe
+    @SuppressWarnings("unchecked")
+    void printMe() {
+        for (String str : ((List<String>)this.value)) {
+            System.out.println(str);
         }
     }
 }
+
