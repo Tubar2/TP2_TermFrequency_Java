@@ -10,3 +10,5 @@
 .idea/
 *.class
 *.iml
+out/
+*.kotlin_module

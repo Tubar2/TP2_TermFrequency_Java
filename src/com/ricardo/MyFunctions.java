@@ -7,13 +7,13 @@ import java.util.*;
 class MyFunctions {
 
     //Opens entry file and returns data Str
-    Object readFile() {
+    Object readFile(Object path) {
 
         StringBuilder data = new StringBuilder();
 
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new FileReader("dracula.txt"));
+            scanner = new Scanner(new FileReader((String)path));
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
