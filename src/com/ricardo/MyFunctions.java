@@ -34,7 +34,7 @@ class MyFunctions {
 
     //Removes special characters from previously created data Str
     Object filterChars(Object data) {
-        String str = ((String)data).replaceAll("[^a-zA-Z0-9\\s]", " "); //switch all symbols to spaces
+        String str = ((String)data).replaceAll("[^a-zA-Z0-9'\\s]", " "); //switch all symbols to spaces
         return str.trim().replaceAll(" +", " "); //switch consecutive spaces to single space
     }
 
