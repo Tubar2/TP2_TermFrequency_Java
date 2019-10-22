@@ -1,10 +1,6 @@
 package com.ricardo;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Future;
 import java.util.function.Function;
 
 class TheOne<T>  {
@@ -16,7 +12,7 @@ class TheOne<T>  {
 
     <U>TheOne<U> bind(Function<T, U> myFunction) {
         U value = myFunction.apply(this.value);
-        return new TheOne<U>(value);
+        return new TheOne<>(value);
     }
 
     //Prints list of 25 most used words with sorted freq

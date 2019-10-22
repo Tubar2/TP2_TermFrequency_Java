@@ -20,7 +20,8 @@ public class Main {
                 .bind(MyFunctions::removeStopWords)
                 .bind(MyFunctions::frequencies)
                 .bind(MyFunctions::sort)
-                .bind(MyFunctions::top_25_freqs).bind(TheOne::printMe);
+                .bind(MyFunctions::top_25_freqs)
+                .bind(TheOne::printMe);
 
     }
 
