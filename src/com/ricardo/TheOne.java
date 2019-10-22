@@ -1,27 +1,32 @@
 package com.ricardo;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Future;
 import java.util.function.Function;
 
-class TheOne {
-    private Object value;
+class TheOne<T> {
+    private T value;
 
-    TheOne(String value) {
+    TheOne(T value) {
         this.value = value;
     }
 
-    TheOne bind(Function<Object, Object> myFunction) {
-        this.value = myFunction.apply(this.value);
-        return this;
+    <U>TheOne<U> bind(Function<? super T,? extends U > myFunction) {
+        U value = myFunction.apply(this.value);
+        return new TheOne<U>(value);
     }
 
     //Prints list of 25 most used words with sorted freqs
-    //TODO: should write some code to check if the cast from Object to List<> is safe
-    @SuppressWarnings("unchecked")
     void printMe() {
-        for (String str : ((List<String>)this.value)) {
+        for (String str : (List<String>)(this.value)) {
             System.out.println(str);
         }
+    }
+
+    T get(){
+        return this.value;
     }
 }
 
