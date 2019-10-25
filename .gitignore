@@ -10,3 +10,4 @@
 .idea/
 *.class
 *.iml
+/out/production/TP2_2/META-INF/TP2_2.kotlin_module
