@@ -4,10 +4,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-class MyMonads {
+public class MyMonads {
 
     //Opens entry file and returns data Str
-    String readFile(String path) {
+    public String readFile(String path) {
 
         StringBuilder data = new StringBuilder();
 
