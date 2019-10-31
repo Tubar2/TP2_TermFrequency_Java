@@ -3,14 +3,14 @@ package com.ricardo;
 import java.util.List;
 import java.util.function.Function;
 
-class TheOne<T>  {
+public class TheOne<T>  {
     private T value;
 
-    TheOne(T value) {
+    public TheOne(T value) {
         this.value = value;
     }
 
-    <U>TheOne<U> bind(Function<T, U> myFunction) {
+    public <U>TheOne<U> bind(Function<T, U> myFunction) {
         U value = myFunction.apply(this.value);
         return new TheOne<>(value);
     }
@@ -28,6 +28,10 @@ class TheOne<T>  {
         for (String str : (List<String>)(this.value)) {
             System.out.println(str);
         }
+    }
+    /* Getter */
+    public T getValue() {
+        return value;
     }
 
 }

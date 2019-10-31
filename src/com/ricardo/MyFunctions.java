@@ -4,10 +4,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-class MyFunctions {
+public class MyFunctions {
 
     //Opens entry file and returns data Str
-    static String readFile(String path) {
+    public static String readFile(String path) {
 
         StringBuilder data = new StringBuilder();
 
