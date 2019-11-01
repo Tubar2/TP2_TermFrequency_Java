@@ -1,7 +1,10 @@
 package com.TermFreq;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
+
+        long startTime = System.nanoTime();
 
         String path = "resources/";
         if (args.length > 0) {
@@ -20,6 +23,11 @@ public class Main {
                 .bind(MyFunctions::sort)
                 .bind(MyFunctions::top_25_freqs)
                 .bind(TheOne::printMe);
+
+        long endTime = System.nanoTime();
+        long totalTime = TimeUnit.NANOSECONDS.toMillis((endTime - startTime));
+
+        System.out.println("Total time = " + totalTime + " milliseconds");
 
     }
 

@@ -3,14 +3,14 @@ package com.TermFreq;
 import java.util.List;
 import java.util.function.Function;
 
-class TheOne<T>  {
+public class TheOne<T>  {
     private T value;
 
-    TheOne(T value) {
+    public TheOne(T value) {
         this.value = value;
     }
 
-    <U>TheOne<U> bind(Function<T, U> myFunction) {
+    public <U>TheOne<U> bind(Function<T, U> myFunction) {
         U value = myFunction.apply(this.value);
         return new TheOne<>(value);
     }
@@ -22,5 +22,11 @@ class TheOne<T>  {
         }
         return true;
     }
+
+    /* Getter Method for tests*/
+    public T getValue() {
+        return value;
+    }
+
 }
 
