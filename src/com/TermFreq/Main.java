@@ -1,16 +1,14 @@
-package com.ricardo;
-
-import java.util.List;
+package com.TermFreq;
 
 public class Main {
     public static void main(String[] args) {
 
-        String path;
+        String path = "resources/";
         if (args.length > 0) {
-            path = args[0];
+            path = path.concat(args[0]);
         }
         else{
-            path = "dracula.txt";
+            path = path.concat("dracula.txt");
         }
 
         new TheOne<>(path).bind(MyFunctions::readFile)

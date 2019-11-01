@@ -1,4 +1,4 @@
-package com.ricardo;
+package com.TermFreq;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,22 +11,16 @@ class MyFunctions {
 
         StringBuilder data = new StringBuilder();
 
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(new FileReader(path));
+        try (Scanner scanner = new Scanner(new FileReader(path))) {
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-//                System.out.println("Read " + line);
                 data.append(line);
                 data.append(" ");
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (scanner != null) {
-                scanner.close();
-            }
         }
 
         return data.toString();
@@ -55,11 +49,8 @@ class MyFunctions {
 
         StringBuilder t_stop_words = new StringBuilder();
 
-        Scanner scanner = null;
-
         //Create String of stop words -> stop_words
-        try {
-            scanner = new Scanner(new FileReader("stop_words.txt"));
+        try (Scanner scanner = new Scanner(new FileReader("resources/stop_words.txt"))) {
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -67,12 +58,9 @@ class MyFunctions {
                 t_stop_words.append(line);
                 t_stop_words.append(" ");
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (scanner != null) {
-                scanner.close();
-            }
         }
 
         //Create String vector of original words
@@ -131,7 +119,6 @@ class MyFunctions {
                 break;
             }
         }
-
         return top25;
     }
 

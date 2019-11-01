@@ -1,4 +1,4 @@
-package com.ricardo;
+package com.TermFreq;
 
 import java.util.List;
 import java.util.function.Function;
@@ -22,13 +22,5 @@ class TheOne<T>  {
         }
         return true;
     }
-
-    @SuppressWarnings("unchecked")
-    void printMe2() {
-        for (String str : (List<String>)(this.value)) {
-            System.out.println(str);
-        }
-    }
-
 }
 
