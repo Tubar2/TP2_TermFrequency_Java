@@ -54,7 +54,6 @@ class MyFunctions {
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                //System.out.println("Read " + line);
                 t_stop_words.append(line);
                 t_stop_words.append(" ");
             }
