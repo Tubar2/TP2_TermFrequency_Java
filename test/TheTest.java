@@ -1,5 +1,5 @@
-import com.ricardo.MyFunctions;
-import com.ricardo.TheOne;
+import com.TermFreq.MyFunctions;
+import com.TermFreq.TheOne;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,7 +12,6 @@ public class TheTest {
 
     @Test()
     public void bindTest(){
-        //Todo: Insert in try catch block
         try {
             TheOne theOne1 = new TheOne<>("").bind(MyFunctions::readFile);
         } catch (Exception e){
